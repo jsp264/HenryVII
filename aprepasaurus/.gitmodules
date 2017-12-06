@@ -1,0 +1,4 @@
+[submodule "myprevenv"]
+	path = aprepasaurus/myprepenv
+	url = https//github.com/jsp264/HenryVII.git
+	ignore = untracked
