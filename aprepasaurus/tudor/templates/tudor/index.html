@@ -1,0 +1,29 @@
+<!--new index woo!-->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'tudor/styles.css' %}" />
+{% include "tudor/header.html" %}
+
+<h4> TUTORS </h4>
+
+{% if available_tutors_list %}
+    <ul>
+    {% for tutor in available_tutors_list  %}
+        <li><a href="{% url 'tudor:detail' tutor.id %}">{{ tutor.screen_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no Tutors available at the moment :(</p>
+{% endif %}
+
+<h4> CUSTOMERS </h4>
+
+{% if seekers %}
+    <ul>
+    {% for seek in seekers  %}
+        <li><a href="{% url 'tudor:detail_seek' seek.id %}">{{ seek.seek_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no Customers available at the moment :(</p>
+{% endif %}

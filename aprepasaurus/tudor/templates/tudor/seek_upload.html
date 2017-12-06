@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% include "tudor/header.html" %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TUTOR UPLOAD PAGE!</title>   
+    </head>
+    <body>
+
+        <!-- Upload form. Note enctype attribute! -->
+        <div class='row' id="king-div-see">
+        <div class='col-sm-4' id='toot-detail-div-cor'>
+        <h2 id="toot-name">NEW CUSTOMER</h2>
+        <form action="{% url 'tudor:seek_upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+            <p id='see-pub'>   {{ form.docfile }}</p>
+            </p><br><br><br>
+            <h2 id="toot-name"> PROFILE QUESTIONS </h2>
+            <h5> 1. What is your Name? </h5>
+            <p><input type="text"   class="form-control"  name="name" placeholder="이름이 뭐예요?" required/></p><br>
+            <h5> 2. What is your Email? </h5>
+            <p><input type="email"   class="form-control"  name="tootemail" placeholder="이메일 주소가 어떻게 되세요?" required/></p><br>
+            <h5> 3. Do you have a preferred address? (please enter in Korean) </h5>
+            <p><input type="text"   class="form-control"  name="address" placeholder="선호하는 주소가 있나요? AndyPrep에 대해 비워 둠 (한국어를 입력해 주세요)" /></p><br>
+            <h5> 5. Are you a student or a parent? </h5>
+            
+            <div class="btn-group"> 
+            {% for dgree in form3.parentf %}
+                <label class="btn btn-success">
+                <input type="radio" name="degree" value="{{dgree.choice_label}}" id="id_subjects_{{forloop.counter}}" /> {{ dgree.choice_label }}
+                </label>
+            {% endfor %}
+            </div><br><br><br>
+
+            <h5> 7. What Subjects are you interested in? </h5>
+            <div class="btn-group"> 
+            {% for checkbox in form2.subjects %}
+                <label class="btn btn-info" id="sub-css">
+                <input type="checkbox" name="subjects" value="{{checkbox.choice_label}}" id="id_subjects_{{forloop.counter}}" /> {{ checkbox.choice_label }}
+                </label><br>
+            {% endfor %}
+            </div>
+            <br>
+
+            <p><input type="submit" id="tu-submit" class="btn btn-warning active" value="Submit Your Profile!"/></p><br>
+        </form>
+        </div>
+        </div>
+    </body>
+</html> 

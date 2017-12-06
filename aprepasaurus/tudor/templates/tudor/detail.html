@@ -1,0 +1,91 @@
+<!-- DETAIL -->
+
+<html>
+<head>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6c5625f34c996152221a935657627be&libraries=services"></script>
+	<meta charset="utf-8"/>
+	<title>Tutor Page</title>
+</head>
+{% load static %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% include "tudor/header.html" %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'tudor/styles.css' %}" />
+
+<div class='row' id="king-div">
+<div class="col-sm-4" id='toot-detail-div'>
+<h1 id='toot-name'>{{ tutor.screen_name }}</h1>
+<h2>{{tutor.teacher_email}}<h2>
+
+<img src="../../media/{{ tutor.tutor_photo.name }}" alt="TUTOR_PHOTO" height="200" width="200" vspace="20">
+
+<div class="college-text"><h3>{{tutor.alma_mater}}</h3>
+<h4>{{tutor.degree}} of {{tutor.major}}</h4></div> <br><br>
+
+<h3 id='toot-name'>Preferred Meeting Place</h3>
+
+<div id="map" style="width:350px;height:250px;" hspace="20"></div>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new daum.maps.LatLng(33.450701, 126.570667),
+			level: 4
+		};
+		var map = new daum.maps.Map(container, options);
+
+		window.onload = function(){
+
+		var geocoder = new daum.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		var address = "";
+		if ("{{tutor.teacher_address}}" == '') {
+			address='서울특별시 강남구 논현로 167길 19, 남도빌딩'
+		}
+		else{
+			address = "{{tutor.teacher_address}}";
+		}
+		geocoder.addressSearch(address, function(result, status) {
+
+    	// 정상적으로 검색이 완료됐으면 
+     	if (status === daum.maps.services.Status.OK) {
+
+        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        if (address=='서울특별시 강남구 논현로 167길 19, 남도빌딩') address = '앤디프랩';
+        var infowindow = new daum.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">' + address + '</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    	} 
+		});    
+	}
+	</script><br>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h3 id='toot-name'>Available Subjects</h3>
+
+{% csrf_token %}
+{% for spec in tutor.specialty_set.all %}
+    <name="spec" id="choice{{ forloop.counter }}" value="{{ spec.id }}" />
+    <label for="choice{{ forloop.counter }}"><h4>{{ spec.spec_text }}</h4></label><br />
+    <p>{{spec.desc_text}}</p><br/>
+{% endfor %}
+</div>
+</div>
+
+</html>

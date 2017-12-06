@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'tudor/styles.css' %}" />
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>APREPASAURUS</title>   
+    </head>
+
+<header class = "navbar navbar-default" role = "banner">
+<div class = "container">
+    <div class ="navbar-header">
+        <button type = "button" class= "navbar-toggle" data-toggle = "collapse" data-target = "#dropdown">
+            <span class = "sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <p><a href="{% url 'tudor:index' %}" class ="navbar-brand">ANDY PREP: 앤디프랩,어학원,NEW SAT,ACT,iBT TOEFL,SSAT</a></p>
+    </div><!-- End Navbar Header-->
+
+    <div class = "collapse navbar-collapse" id = "dropdown">
+
+        <ul class = "nav navbar-nav navbar-right" role = "navigation">
+            <li><a href="#" class='ghor'>Not Sure</a></li>
+            <li><a href="{% url 'tudor:tutor_upload' %}">New Tutor Page</a></li>
+            <li><a href="{% url 'tudor:seek_upload' %}">New Customer Page</a></li>
+            <li><a href="#">Tutor Search</a></li>
+        </ul>      
+
+    </div><!-- End Nav Contents -->
+</div><!-- End Container -->
+</header>
+
+
+
+</html>
+

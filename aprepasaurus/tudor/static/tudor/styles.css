@@ -1,0 +1,123 @@
+/* css shit */
+body {
+    background: white url("images/pusheen.gif") no-repeat right bottom;
+}
+
+.navbar-brand {
+	font-family: 'Spectral SC', serif;
+	background-color: #fff;
+	color: #B22222;
+}
+
+.navbar-brand a{
+	color: #B22222;
+}
+
+.navbar-header {
+	display: initial;
+	float: relative;
+}
+
+.navbar-right{
+	color:#ffffff;
+}
+
+.navbar-toggle{
+	color:#000;
+}
+
+.form-con {
+	width:28em;
+}
+
+#toot-detail-div {
+	right: -5%;
+	margin:auto;
+	float:relative;
+	width:90%;
+}
+
+#toot-detail-div-cor {
+	right: 5%;
+	width:90%;
+	text-align: right;
+	float:right;
+}
+
+#toot-detail-div-cor-1 {
+	right: 5%;
+	width:90%;
+	float:right;
+}
+
+#toot-name {
+	font-family: 'Spectral SC', serif;
+	color: #B22222;
+}
+
+#toot-name h3 {
+	display:block;
+	margin:auto;
+}
+
+#dropdown > a {
+	color:#fff;
+}
+
+#tootmap-detail-div {
+	right:-10%;
+}
+
+#new-tutor {
+	right:-10%;
+	margin:auto;
+}
+
+.college-text {
+	font-family: 'Merriweather', serif;
+}
+
+#king-div {
+	position:relative;
+	left:13.46em;
+	width:36.3%;
+	background-color: rgba(135,206,250,0.1);
+}
+
+#king-div-seek-1 {
+	position:relative;
+	left:13.46em;
+	width:36.3%;
+	background-color: rgba(240,46,17,0.1);
+}
+
+#king-div-see {
+	position:relative;
+	float:right;
+	right:13.46em;
+	width:36.3%;
+	background-color: rgba(221,76,107,0.22);
+}
+
+#upload-main-div {
+	position:relative;
+	width:46%;
+	right: -3em;
+	background-color: rgba(91,250,122,0.22);
+}
+
+#sub-css {
+	display:block;
+	width:18em;
+}
+
+#see-pub {
+	float:right;
+	text-align: right;
+}
+
+#tu-submit {
+	float: relative;
+	margin-top: 6em;
+	width:25em;
+}
